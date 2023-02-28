@@ -1,38 +1,243 @@
-.App {
-  text-align: center;
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+body {
+  background-color: #f8f7f3;
+}
+.container {
+  max-width: 1450px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.pricing-boxes__wrapper {
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 30px 0;
+}
+.pricing__item {
+  border: 1px solid #c6c4b8;
+  border-radius: 1em;
+  background-color: #fff;
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 5%), 0 10px 25px 0 rgb(50 50 93 / 10%);
+  padding: 17px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 300px;
+  transition: all .5s;
 }
-
-.App-link {
-  color: #61dafb;
+.pricing__item:nth-of-type(4).active {
+  border-color: #009B63;
+  box-shadow: 0px 0px 0px 4px rgb(0 155 99);
 }
+.pricing__item:nth-of-type(4).active .pricing__btn {
+  background-color: rgb(0, 155, 99);
+}    
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pricing__item.active {
+  position: relative;
+  transform: translateY(-16px);
+}
+.pricing__item:nth-of-type(3) {
+  background-color: #080807;
+  box-shadow: 0 30px 50px 0 rgb(8 8 7 / 25%), 0 10px 25px 0 rgb(8 8 7 / 16%);
+}
+.pricing__item:nth-of-type(3) .pricing__title,
+.pricing__item:nth-child(3) .pricing__cost ,
+.pricing__item:nth-of-type(3) .pricing__views {
+  color: #fff;
+}
+.pricing__item:nth-of-type(3) .pricing__description {
+  color: #c6c4b8;
+}
+.pricing__item:nth-of-type(3) .pricing__btn {
+  background-color: #3d4fe0;
+}
+.pricing__item:nth-of-type(3) .pricing__about ,
+.pricing__item:nth-of-type(3) .pricing__item li {
+  color: #e9e7e0;
+}
+.pricing__title {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+.pricing__description{
+  font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #6c6a60;
+}
+.pricing-box__top {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+}
+.pricing__cost {
+  font-size: 1.8em;
+  line-height: 1.1;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #c6c4b8;
+}
+.pricing__box-price {
+  width: 100%;
+  min-height: 79px;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.pricing__views {
+  color: #2d2c2a;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+}
+.pricing__btn {
+  padding: 18px 32px;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  background: #080807;
+  color: #fff;
+  margin-bottom: 1em;
+  transition: all .5s;
+  border: 1px solid transparent;
+}
+.pricing__btn:hover {
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #080807;
+}
+.pricing__about {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #514f48;;
+}
+.pricing__item ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pricing__item li {
+  position: relative;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #514f48;
+  padding-left: 30px;
+}
+.pricing__item li::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+  background: url(../src/images/checkmark.svg) center center / cover no-repeat;
+}
+.pricing__about {
+  margin-bottom: 12px;
+}
+.pricing__main-title {
+    font-size: 4.8em;
+    line-height: 1;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.pricing__input-wrapper {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.pricing {
+  padding: 25px 0;
+}
+.pricing__input {
+  width: 100%;
+}
+.pricing__estimate {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.pricing__estimated {
+  font-family: 'Tolstoy Sans',sans-serif;
+  font-size: 1.38em;
+  line-height: 1.4;
+  font-weight: 600;
 }
