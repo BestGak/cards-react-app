@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/cards-react-app/static/css/main.c93bf75e.css",
+    "main.js": "/cards-react-app/static/js/main.ad52b043.js",
+    "static/js/787.8517b185.chunk.js": "/cards-react-app/static/js/787.8517b185.chunk.js",
+    "index.html": "/cards-react-app/index.html",
+    "static/media/checkmark.svg": "/cards-react-app/static/media/checkmark.c6580fbe33dc13153e18.svg",
+    "main.c93bf75e.css.map": "/cards-react-app/static/css/main.c93bf75e.css.map",
+    "main.ad52b043.js.map": "/cards-react-app/static/js/main.ad52b043.js.map",
+    "787.8517b185.chunk.js.map": "/cards-react-app/static/js/787.8517b185.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c93bf75e.css",
+    "static/js/main.ad52b043.js"
+  ]
+}
