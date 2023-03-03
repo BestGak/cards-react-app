@@ -38,7 +38,7 @@ const dataObj = [
         name: 'Enterprise',
         description: 'Best for brands with over 100K visitors/month and brands seeking enterprise-grade service level',
         cost: 'Let’s Talk',
-        minCount: 100000,
+        minCount: 100000,   
         maxCount: 100000,
         countView: 'Unlimited views/month',
         nameButton: 'Contact Sales',
@@ -46,23 +46,55 @@ const dataObj = [
         pluses: ['30-Day Free Trial', 'Fixed price', 'Custom analytics']
     }
 ]
-
 const Cards = () => {
     const [count, setCount] = useState(1000);
 
     const inputHandler = (e) => setCount(e.target.value);
 
+    const costPlan = (count) => {
+        const addExtraMoney = (defaultValue , cost  ) => defaultValue + (10 * (count / 1000 - cost));
+
+        if (count >= 2000 && count <= 5000) {
+            return (
+            <div className='pricing__estimated-cost'>
+                <span>19$<span className='pricing__month'>/month</span></span>
+            </div>)
+          } else if (count > 5000 && count <= 33000) {
+            return (
+                <div className='pricing__estimated-cost'>
+                    <span>{addExtraMoney(19 , 5)}$<span className='pricing__month'>/month</span></span>
+                </div>)
+          } else if (count > 33000 && count <= 50000) {
+            return (
+                <div className='pricing__estimated-cost'>
+                    <span>299$<span className='pricing__month'>/month</span></span>
+                </div>
+                )
+          } else if (count > 50000 && count < 100000) {
+            return (
+                <div className='pricing__estimated-cost'>
+                    <span>{addExtraMoney(299,50)}$<span className='pricing__month'>/month</span></span>
+                </div>)
+          }
+    }
+
     return (
         <div className="pricing">
             <h1 className='pricing__main-title'>We’ve got a plan for you</h1>
              <div className="pricing__input-wrapper">
+                <div className="pricing__input-container">
                 <input className='pricing__input' onChange={inputHandler} type="range"  name="price" 
                 min="1000" max="100000" value={count} step="1000"></input>
+                <div className="pricing__input-tolltip">
+                    <span class="price-tooltip__text">{count} visitors/month</span>  
+                </div>
+                </div>
                 <span className="pricing__min_max">1k</span>
                 <span className="pricing__min_max">100k+</span>
                 <div className="pricing__estimate">
                     <span className='pricing__estimated'>Your estimated price is:</span>
-                    <span className='pricing__estimated-cost'>{count > 5000 ? '50$': '100$'}</span>
+                    {costPlan(count)}
+                    {/* <span className='pricing__estimated-cost'>{costPlan(count)}</span> */}
                 </div>
              </div>
         
@@ -92,6 +124,7 @@ const Cards = () => {
             })}
         </div>
     </div>
+    
     )
 }
 export default Cards
